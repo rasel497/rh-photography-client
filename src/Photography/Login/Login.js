@@ -1,11 +1,14 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
-    const { signInUser } = useContext(AuthContext);
-    const [user, setUser] = useState();
+    const { signInUser, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const googleProvider = new GoogleAuthProvider();
 
     // logIn/signIn with eamil and password
     const handleSignIn = event => {
@@ -24,6 +27,16 @@ const Login = () => {
                 form.reset();
             })
             .catch(err => console.log(err));
+    }
+
+    // Social sign in method
+    const handleGoogleSignIn = () => {
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -57,10 +70,13 @@ const Login = () => {
 
                     </form>
                     <p className='text-center'>Are you new Rh-Photography? <Link className='text-orange-600 font-bold' to='/register'>Sign Up</Link></p>
+
+                    <div className='flex justify-center'>
+                        <button onClick={handleGoogleSignIn} className="btn btn-outline btn-primary border-none"><FcGoogle className='text-2xl'></FcGoogle></button>
+                    </div>
                 </div>
 
             </div>
-
         </div>
     );
 };

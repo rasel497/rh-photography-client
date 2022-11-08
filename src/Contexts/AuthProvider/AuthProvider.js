@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 
 
@@ -43,12 +43,41 @@ const AuthProvider = ({ children }) => {
 
     }, []);
 
+    // -------------------social loign user---------------//
+
+    const googleSignIn = (provider) => {
+        setLoading(true);
+        return signInWithPopup(auth, provider)
+    }
+
+
+
+
+    // // signInWithPopupGoogle
+    // const providerLoginGoogle = (provider) => {
+    //     setLoading(true);
+    //     return signInWithPopup(auth, provider);
+    // }
+
+    // // signInWithPopupFacebook
+    // const providerLoginFacebook = (provider) => {
+    //     setLoading(true);
+    //     return signInWithPopup(auth, provider);
+    // }
+    // // signInWithPopupGitHub
+    // const providerLoginGithub = (provider) => {
+    //     setLoading(true);
+    //     return signInWithPopup(auth, provider);
+    // }
+
     const authInfo = {
         user,
         loading,
         createUser,
         signInUser,
+        googleSignIn,
         logOut,
+
 
     }
 
