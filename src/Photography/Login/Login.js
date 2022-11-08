@@ -43,7 +43,6 @@ const Login = () => {
                     </form>
                     <p className='text-center'>Are you new Rh-Photography? <Link className='text-orange-600 font-bold' to='/register'>Sign Up</Link></p>
 
-
                 </div>
 
             </div>
