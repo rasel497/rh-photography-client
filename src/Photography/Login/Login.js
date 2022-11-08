@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { signInUser } = useContext(AuthContext);
 
     // logIn/signIn with eamil and password
     const handleSignIn = event => {
