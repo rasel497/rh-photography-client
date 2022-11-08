@@ -19,10 +19,19 @@ const AuthProvider = ({ children }) => {
     }
 
 
+    // signInWithEmailAndPassword:
+    const signInUser = (email, password) => {
+
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
+
 
     const authInfo = {
         user,
         createUser,
+        signInUser,
+
 
     }
 
