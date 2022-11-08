@@ -1,10 +1,11 @@
-import { Carousel } from 'flowbite-react';
+
 import React from 'react';
+import Banner from './Banner/Banner';
 
 const Home = () => {
     return (
-        <div className="h-56 sm:h-64 xl:h-50 2xl:h-96">
-
+        <div>
+            <Banner></Banner>
         </div>
     );
 };
