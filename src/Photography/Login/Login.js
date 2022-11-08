@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const { signInUser } = useContext(AuthContext);
+    const [user, setUser] = useState();
+    const navigate = useNavigate();
 
     // logIn/signIn with eamil and password
     const handleSignIn = event => {
@@ -18,6 +20,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate('/');
                 form.reset();
             })
             .catch(err => console.log(err));
@@ -47,12 +50,13 @@ const Login = () => {
                                 <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
                             </label>
                         </div>
+
                         <div className="form-control mt-6">
                             <input className='btn btn-primary' type="submit" value="Login" />
                         </div>
+
                     </form>
                     <p className='text-center'>Are you new Rh-Photography? <Link className='text-orange-600 font-bold' to='/register'>Sign Up</Link></p>
-
                 </div>
 
             </div>

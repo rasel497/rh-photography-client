@@ -11,10 +11,10 @@ const Register = () => {
 
         const form = event.target;
         const name = form.name.value;
-        const PhotoURL = form.PhotoURL.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, PhotoURL, email, password);
+        console.log(name, photoURL, email, password);
 
         createUser(email, password)
             .then(result => {
@@ -23,7 +23,6 @@ const Register = () => {
                 form.reset();
             })
             .catch(err => console.error(err));
-
     }
 
     return (
@@ -45,7 +44,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name='PhotoURL' placeholder="your photo_url" className="input input-bordered" />
+                            <input type="text" name='photoURL' placeholder="your photo_url" className="input input-bordered" />
                         </div>
 
                         <div className="form-control">

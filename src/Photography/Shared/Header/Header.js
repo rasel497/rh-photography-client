@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { FaCamera } from 'react-icons/fa';
+import { FaCamera, FaUserCircle } from 'react-icons/fa';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+
+
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+
+    const handleLogOut = () => {
+        return logOut()
+            .then(() => { })
+            .catch(error => console.error(error));
+    }
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -29,8 +41,40 @@ const Header = () => {
                     <li><Link to='/about'>About Us</Link></li>
                 </ul>
             </div>
-            <div className="navbar-end">
-                <Link to='/login'><button className="btn btn-active btn-primary font-bold">Login</button></Link>
+
+
+            {/* Thsi only for naver loign & logout Conditonal rendering */}
+            <div className="navbar-end px-2">
+                <Link className='flex'>
+                    {
+                        user?.uid ?
+                            <>
+                                <div className="navbar">
+                                    <span> {user?.displayName} </span>
+                                    <Link className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                                        {user?.photoURL ?
+                                            <img className='rounded-full ml-3'
+                                                style={{ width: '40px' }}
+                                                src={user.photoURL} alt="" />
+                                            :
+                                            <FaUserCircle className='text-3xl'></FaUserCircle>
+                                        }
+                                    </Link>
+                                </div>
+
+                                <button onClick={handleLogOut} className="btn px-4 m-2">Log Out</button>
+                            </>
+                            :
+                            <>
+                                <div className="navbar">
+                                    <button className="btn px-4 m-2"> <Link to='/login'>Login</Link></button>
+                                </div>
+                            </>
+                    }
+
+                </Link>
+
+                {/* <Link to='/login' className="btn px-4 m-2">Login</Link> */}
             </div>
         </div>
     );
