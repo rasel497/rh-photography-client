@@ -7,7 +7,9 @@ import PhotoGallery from '../../Others/PhotoGallery/PhotoGallery';
 import About from '../../Photography/About/About';
 import Home from '../../Photography/Home/Home';
 import Login from '../../Photography/Login/Login';
+import AddUser from '../../Photography/Services/AddUser/AddUser';
 import AllService from '../../Photography/Services/AllService/AllService';
+import Review from '../../Photography/Services/Reviews/Review';
 import Register from '../../Photography/SignUp/Register';
 
 export const routes = createBrowserRouter([
@@ -20,8 +22,9 @@ export const routes = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/all-service',
-                element: <AllService></AllService>
+                path: '/services',
+                loader: () => fetch('http://localhost:5000/services'),
+                element: < AllService ></AllService >
             },
             {
                 path: '/blog',
@@ -34,6 +37,14 @@ export const routes = createBrowserRouter([
             {
                 path: '/about',
                 element: <About></About>
+            },
+            {
+                path: '/review',
+                element: <Review></Review>
+            },
+            {
+                path: '/addUser',
+                element: <AddUser></AddUser>
             },
             {
                 path: '/login',

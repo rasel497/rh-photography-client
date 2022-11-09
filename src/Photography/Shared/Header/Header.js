@@ -24,21 +24,39 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 semibold text-md shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/service'>Service</Link></li>
+                        <li><Link to='/services'>Service</Link></li>
                         <li><Link to='/blog'>Blogs</Link></li>
                         <li><Link to='/photo-gallery'>Gallary</Link></li>
                         <li><Link to='/about'>About Us</Link></li>
+                        {
+                            user?.uid ?
+                                <>
+                                    <li><Link to='/review' className='text-red-500'>Reviews</Link></li>
+                                    <li><Link to='/adduser' className='text-red-500'>Add User</Link></li>
+                                </>
+                                :
+                                <> </>
+                        }
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl font-bold"><FaCamera className='mr-2 text-xl'></FaCamera>RH-<p className='text-red-500'>PHOTOGRAPHY</p></a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal text-md font-semibold p-0">
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/all-service'>Services</Link></li>
-                    <li><Link to='/blog'>Blogs</Link></li>
-                    <li><Link to='/photo-gallery'>Gallary</Link></li>
-                    <li><Link to='/about'>About Us</Link></li>
+                    <li><Link to='/'>HOME</Link></li>
+                    <li><Link to='/services'>SERVICES</Link></li>
+                    <li><Link to='/blog'>BLOGS</Link></li>
+                    <li><Link to='/photo-gallery'>GALLERY</Link></li>
+                    <li><Link to='/about'>ABOUT US</Link></li>
+                    {
+                        user?.uid ?
+                            <>
+                                <li><Link to='/review' className='text-red-500'>Reviews</Link></li>
+                                <li><Link to='/adduser' className='text-red-500'>Add User</Link></li>
+                            </>
+                            :
+                            <> </>
+                    }
                 </ul>
             </div>
 

@@ -2,6 +2,7 @@ import { Carousel } from 'flowbite-react';
 import React from 'react';
 import './Banner.css'
 
+
 const Banner = () => {
     return (
 
@@ -23,7 +24,7 @@ const Banner = () => {
 
             <Carousel className="carousel-img rounded-xl" slideInterval={5000}>
                 <img className='object-cover h-full w-full'
-                    src="https://i.ibb.co/4JBDwBS/travellingcard.jpg"
+                    src="https://i.ibb.co/9Wb8w8B/corporateevent.jpg"
                     alt="..."
                 />
                 <img className='object-cover h-full w-full'
@@ -35,7 +36,7 @@ const Banner = () => {
                     alt="..."
                 />
                 <img className='object-cover h-full w-full'
-                    src="https://i.ibb.co/HNQ6qC9/birthdaycard.jpg"
+                    src="https://i.ibb.co/GxwdvBr/birthday.jpg"
                     alt="..."
                 />
                 <img className='object-cover h-full w-full'
