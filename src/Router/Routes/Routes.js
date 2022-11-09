@@ -11,6 +11,7 @@ import AddUser from '../../Photography/Services/AddUser/AddUser';
 import AllService from '../../Photography/Services/AllService/AllService';
 import Review from '../../Photography/Services/Reviews/Review';
 import Register from '../../Photography/SignUp/Register';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 export const routes = createBrowserRouter([
     {
@@ -40,11 +41,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/review',
-                element: <Review></Review>
+                element: <PrivateRoute><Review></Review></PrivateRoute>
             },
             {
                 path: '/addUser',
-                element: <AddUser></AddUser>
+                element: <PrivateRoute><AddUser></AddUser></PrivateRoute>
             },
             {
                 path: '/login',

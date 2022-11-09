@@ -1,14 +1,16 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
     const { signInUser, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
-
+    const location = useLocation();
     const googleProvider = new GoogleAuthProvider();
+
+    const from = location.state?.from?.pathname || '/';
 
     // logIn/signIn with eamil and password
     const handleSignIn = event => {
@@ -23,7 +25,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/');
+                navigate(from, { replace: true });
                 form.reset();
             })
             .catch(err => console.log(err));
@@ -35,6 +37,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
             })
             .catch(err => console.log(err))
     }
