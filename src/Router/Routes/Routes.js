@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../Layout/Main';
 import Blog from '../../Others/Blog/Blog';
 import ErrorPage from '../../Others/ErrorPage/ErrorPage';
+import PhotoGallery from '../../Others/PhotoGallery/PhotoGallery';
 import About from '../../Photography/About/About';
 import Home from '../../Photography/Home/Home';
 import Login from '../../Photography/Login/Login';
@@ -25,6 +26,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/photo-gallery',
+                element: <PhotoGallery></PhotoGallery>
             },
             {
                 path: '/about',
