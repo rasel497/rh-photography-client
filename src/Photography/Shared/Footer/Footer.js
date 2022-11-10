@@ -29,7 +29,7 @@ const Footer = () => {
                     <Link className="link link-hover">Privacy policy</Link>
                     <Link className="link link-hover">Cookie policy</Link>
                 </div>
-                <p className='text-center text-red-500'>copyright by rh-photography@2022</p>
+                <p className='text-center text-red-500'>Copyright by rh-photography@2022</p>
             </footer>
 
         </div>

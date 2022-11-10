@@ -24,7 +24,7 @@ const ServiceCard = ({ service }) => {
                         Price: {price} TK
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
-                        {description.slice(0, 100) + '...'} <span className='text-red-400'><Link to='/review'>Read More</Link></span>
+                        {description.slice(0, 100) + '...'} <span className='text-red-400'><Link to={`/review/${_id}`}>Read More</Link></span>
                     </p>
                     <div className="card-actions justify-center ">
                         <Link to={`/review/${_id}`} className='w-full'><button className="btn btn-wide justify-center items-center w-full" >Service Details</button></Link>
