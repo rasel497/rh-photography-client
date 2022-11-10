@@ -36,13 +36,12 @@ const EditReview = () => {
         }
 
         fetch(`http://localhost:5000/reviews/${id}`, {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(service)
         }).catch(err => console.error(err))
-
 
     }
 

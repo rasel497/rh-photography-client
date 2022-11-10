@@ -1,15 +1,19 @@
 import { Table } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const ServiceDetails = () => {
     const [refresh, setRefresh] = useState();
     const [reviews, setReviews] = useState([]);
     const services = useLoaderData();
-    console.log(services);
+    const [storeReviews, setstoreReviews] = useState([]);
 
-    // 01+02.Creta and Read Data using useEffect() With Map function
+    const { user } = useContext(AuthContext);
+    console.log(user);
+
+    // 01+02.Create and Read Data using useEffect() With Map function
     useEffect(() => {
         fetch('http://localhost:5000/reviews/')
             .then(res => res.json())
@@ -17,20 +21,34 @@ const ServiceDetails = () => {
     }, [refresh])
 
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews/${services._id}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setstoreReviews(data)
+            })
+    }, [services._id])
+
     const handleddReviews = (e) => {
         e.preventDefault();
 
         const form = e.target;
-        const servicetitle = form.servicetitle.value;
-        // const writeReview = form.writeReview.value;
-        // const photoUrl = form.photoUrl.value;
-        console.log(servicetitle);
+        const serviceReview = form.serviceReview.value;
+        const date = new Date();
+        const serviceId = services._id;
+        const email = user.email;
+        const serviceTitle = services.serviceName;
+        const dispalyName = user.displayName;
+        const photURL = user.photoURL;
+        const userUid = user.uid;
+
         form.reset();
 
         const myReview = {
-            servicetitle,
+            serviceReview, date, email, dispalyName, photURL, userUid, serviceId, serviceTitle
         }
-
+        console.log(myReview);
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
@@ -85,9 +103,14 @@ const ServiceDetails = () => {
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-10 mb-2'>
                     <div className="avatar">
                         <div className="w-12 rounded-full">
-                            <img src="https://placeimg.com/192/192/people" alt='' />
+                            {
+                                storeReviews.map(img => {
+                                    return <img src={img.photURL} alt='' />
+                                })
+                            }
+
                         </div>
-                        <input name='servicetitle' type="text" placeholder="give us from your excellent review" className="ml-4 input input-ghost w-full input-bordered" />
+                        <input name='serviceReview' type="text" placeholder="give us from your excellent review" className="ml-4 input input-ghost w-full input-bordered" />
                     </div>
                 </div>
                 <input className='btn ml-20 my-4' type="submit" value="Add Review" />
@@ -97,17 +120,19 @@ const ServiceDetails = () => {
             <Table striped={true}>
 
                 <Table.Body className="divide-y">
-                    {reviews.map((review) => {
+                    {storeReviews.map((review) => {
                         return (
                             <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                                 <Table.Cell>
                                     <div  >
-                                        <img className='w-20 rounded' src={review.photoUrl} alt={review.name} />
+                                        <img className='w-20 rounded' src={review.photURL} alt={review.name} />
                                     </div>
                                 </Table.Cell>
+
+                                <Table.Cell>{review.dispalyName}</Table.Cell>
                                 <Table.Cell>{review.servicetitle}</Table.Cell>
                                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                                    {review.writeReview}
+                                    {review.serviceReview}
                                 </Table.Cell>
                                 <Table.Cell>{review.email}</Table.Cell>
                             </Table.Row>

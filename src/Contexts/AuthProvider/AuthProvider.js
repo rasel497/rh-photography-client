@@ -1,11 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
-
 
 const AuthProvider = ({ children }) => {
 
@@ -30,6 +29,10 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
+    // upadate profile
+    const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile)
+    }
 
     // using for Create User AND Sign In user
     useEffect(() => {
@@ -38,38 +41,17 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
         });
-        return () => {
-            unsubscribe();
-        }
+        return () => unsubscribe()
 
     }, []);
 
     // -------------------social loign user---------------//
-
     const googleSignIn = (provider) => {
         setLoading(true);
         return signInWithPopup(auth, provider)
     }
 
 
-
-
-    // // signInWithPopupGoogle
-    // const providerLoginGoogle = (provider) => {
-    //     setLoading(true);
-    //     return signInWithPopup(auth, provider);
-    // }
-
-    // // signInWithPopupFacebook
-    // const providerLoginFacebook = (provider) => {
-    //     setLoading(true);
-    //     return signInWithPopup(auth, provider);
-    // }
-    // // signInWithPopupGitHub
-    // const providerLoginGithub = (provider) => {
-    //     setLoading(true);
-    //     return signInWithPopup(auth, provider);
-    // }
 
     const authInfo = {
         user,
@@ -78,6 +60,7 @@ const AuthProvider = ({ children }) => {
         signInUser,
         googleSignIn,
         logOut,
+        updateUserProfile
 
     }
 

@@ -1,20 +1,20 @@
 import { Dropdown, Table } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const Review = () => {
     const [reviews, setReviews] = useState([]);
     const [refresh, setRefresh] = useState();
-
+    const { user } = useContext(AuthContext);
 
     // 01+02.Creta and Read Data using useEffect() With Map function
     useEffect(() => {
-        fetch('http://localhost:5000/reviews/')
+        fetch(`http://localhost:5000/myReviews/${user.uid}`)
             .then(res => res.json())
             .then(data => setReviews(data))
-    }, [refresh])
-
+    }, [user.uid])
 
 
     // 03.Delete data from client with MongoDB
@@ -43,10 +43,8 @@ const Review = () => {
             {/* --------------------Reviews added items----------------- */}
             <Table striped={true}>
                 <Table.Head>
-                    <Table.HeadCell>Image</Table.HeadCell>
-                    <Table.HeadCell>User Name</Table.HeadCell>
+                    <Table.HeadCell>Service Name</Table.HeadCell>
                     <Table.HeadCell>Review</Table.HeadCell>
-                    <Table.HeadCell>Email</Table.HeadCell>
                     <Table.HeadCell>
                         <span className="sr-only">Edit</span>
                         Edit / Delete
@@ -56,16 +54,13 @@ const Review = () => {
                     {reviews.map((review) => {
                         return (
                             <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                                <Table.Cell>
-                                    <div  >
-                                        <img className='w-20 rounded' src={review.photoUrl} alt={review.name} />
-                                    </div>
-                                </Table.Cell>
-                                <Table.Cell>{review.servicetitle}</Table.Cell>
+
+                                <Table.Cell>{review.serviceTitle}</Table.Cell>
+
                                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                                    {review.writeReview}
+                                    {review.serviceReview}
                                 </Table.Cell>
-                                <Table.Cell>{review.email}</Table.Cell>
+
                                 <Table.Cell>
                                     <div className='flex'>
                                         <button onClick={() => handleEdit(review._id)} className="btn btn-sm mr-2">Edit</button>

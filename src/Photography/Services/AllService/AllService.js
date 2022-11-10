@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 const AllService = () => {
-    const services = useLoaderData([]);
+    const services = useLoaderData();
 
     return (
         <div>
