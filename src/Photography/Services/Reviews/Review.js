@@ -1,8 +1,22 @@
+import { data } from 'autoprefixer';
+import { Dropdown, Table } from 'flowbite-react';
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 
 const Review = () => {
+    const [reviews, setReviews] = useState([]);
+    const [refresh, setRefresh] = useState();
     const services = useLoaderData();
     console.log(services);
+
+    // // 01+02.Creta and Read Data using useEffect() With Map function
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews/')
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [refresh])
+
 
     const handleddReviews = (e) => {
         e.preventDefault();
@@ -11,7 +25,8 @@ const Review = () => {
         const servicetitle = form.servicetitle.value;
         const writeReview = form.writeReview.value;
         const photoUrl = form.photoUrl.value;
-        console.log(servicetitle, photoUrl, writeReview);
+        // console.log(servicetitle, photoUrl, writeReview);
+        form.reset();
 
         const myReview = {
             servicetitle,
@@ -27,8 +42,25 @@ const Review = () => {
             body: JSON.stringify(myReview)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                toast.success('Thank you for review us');
+                setRefresh(!refresh);
+                console.log(data)
+            }).catch(err => toast.error(err.message));
     }
+
+    // 03.Delete data from client with MongoDB
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/reviews/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Successfully removed');
+                setRefresh(!refresh);
+                console.log(data)
+            }).catch(err => toast.error(err.message));
+    };
 
 
     return (
@@ -80,6 +112,42 @@ const Review = () => {
                 <input className='btn my-4' type="submit" value="Add Review" />
             </form>
 
+            {/* --------------------Reviews added items----------------- */}
+            <Table striped={true}>
+                <Table.Head>
+                    <Table.HeadCell>Image</Table.HeadCell>
+                    <Table.HeadCell>Service Name</Table.HeadCell>
+                    <Table.HeadCell>Review</Table.HeadCell>
+                    <Table.HeadCell>Email</Table.HeadCell>
+                    <Table.HeadCell>
+                        <span className="sr-only">Edit</span>
+                        Actions
+                    </Table.HeadCell>
+                </Table.Head>
+                <Table.Body className="divide-y">
+                    {reviews.map((review) => {
+                        return (
+                            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                                <Table.Cell>
+                                    <div  >
+                                        <img className='w-20 rounded' src={review.photoUrl} alt={review.name} />
+                                    </div>
+                                </Table.Cell>
+                                <Table.Cell>{review.servicetitle}</Table.Cell>
+                                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                                    {review.writeReview}
+                                </Table.Cell>
+                                <Table.Cell>{review.email}</Table.Cell>
+                                <Table.Cell>
+                                    <Dropdown label="Action" arrowIcon={false}>
+                                        <Dropdown.Item onClick={() => handleDelete(review._id)}>Delete</Dropdown.Item>
+                                    </Dropdown>
+                                </Table.Cell>
+                            </Table.Row>
+                        );
+                    })}
+                </Table.Body>
+            </Table>
         </div>
 
     );

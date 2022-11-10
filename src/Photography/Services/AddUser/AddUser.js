@@ -1,31 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
-
-const handleAddService = (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const serviceName = form.servicename.value;
-    const image = form.photoUrl.value;
-    const price = form.price.value;
-    const description = form.description.value;
-    const date = new Date();
-    // console.log(serviceName, image, price, description);
-
-    const services = {
-        serviceName, image, price, description, date
-    }
-    fetch('http://localhost:5000/services', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(services)
-    })
-        .then(res => res.json())
-        .then(data => console.log(data))
-}
 const AddUser = () => {
+    const [refresh, setRefresh] = useState();
+
+
+    const handleAddService = (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const serviceName = form.servicename.value;
+        const image = form.photoUrl.value;
+        const price = form.price.value;
+        const description = form.description.value;
+        const date = new Date();
+        // console.log(serviceName, image, price, description);
+
+        const services = {
+            serviceName, image, price, description, date
+        }
+        fetch('http://localhost:5000/services', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(services)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('You are added new service');
+                setRefresh(!refresh);
+                console.log(data)
+            }).catch(err => toast.error(err.message));
+    }
     return (
         <div className='mx-40'>
 
