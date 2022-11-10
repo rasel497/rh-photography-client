@@ -1,8 +1,8 @@
 
 import React from 'react';
 import OurTems from '../../Others/OurTems/OurTems';
-import PhotoGallery from '../../Others/PhotoGallery/PhotoGallery';
 import StatsCount from '../../Others/StatsCount/StatsCount';
+import About from '../About/About';
 import BannerService from '../Services/BannerService/BannerService';
 import Banner from './Banner/Banner';
 
@@ -11,7 +11,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <BannerService></BannerService>
-            <PhotoGallery></PhotoGallery>
+            <About></About>
             <StatsCount></StatsCount>
             <OurTems></OurTems>
         </div>

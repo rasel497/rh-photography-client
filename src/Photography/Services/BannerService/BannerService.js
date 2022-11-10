@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Review from '../Reviews/Review';
 import ServiceCard from '../ServiceCard/ServiceCard';
 
@@ -7,7 +8,7 @@ const BannerService = () => {
     console.log(services);
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch(`http://localhost:5000/services?size=${3}`)
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -22,6 +23,9 @@ const BannerService = () => {
                         service={service}
                     ></ServiceCard>)
                 }
+            </div>
+            <div className='flex justify-center items-center'>
+                <Link to='/services'><button className="btn btn-active btn-primary">See All Service</button></Link>
             </div>
         </div>
     );

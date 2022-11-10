@@ -26,7 +26,6 @@ const Header = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/services'>Service</Link></li>
                         <li><Link to='/blog'>Blogs</Link></li>
-                        <li><Link to='/photo-gallery'>Gallary</Link></li>
                         <li><Link to='/about'>About Us</Link></li>
                         {
                             user?.uid ?
@@ -46,7 +45,6 @@ const Header = () => {
                     <li><Link to='/'>HOME</Link></li>
                     <li><Link to='/services'>SERVICES</Link></li>
                     <li><Link to='/blog'>BLOGS</Link></li>
-                    <li><Link to='/photo-gallery'>GALLERY</Link></li>
                     <li><Link to='/about'>ABOUT US</Link></li>
                     {
                         user?.uid ?
