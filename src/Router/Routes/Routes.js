@@ -25,12 +25,12 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/services',
-                loader: () => fetch('http://localhost:5000/services'),
+                loader: () => fetch('https://rh-photography-server.vercel.app/services'),
                 element: < AllService ></AllService >
             },
             {
                 path: '/servicedetails/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
+                loader: ({ params }) => fetch(`https://rh-photography-server.vercel.app/services/${params.id}`),
                 element: <ServiceDetails></ServiceDetails>
             },
             {
@@ -51,7 +51,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/editreview/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/editreview/${params.id}`),
+                loader: ({ params }) => fetch(`https://rh-photography-server.vercel.app/editreview/${params.id}`),
                 element: <EditReview></EditReview>
             },
             {

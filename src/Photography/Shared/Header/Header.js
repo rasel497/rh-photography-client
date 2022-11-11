@@ -38,7 +38,10 @@ const Header = () => {
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl font-bold"><FaCamera className='mr-2 text-xl'></FaCamera>RH-<p className='text-red-500'>PHOTOGRAPHY</p></a>
+                <>
+                    <a className="btn btn-ghost normal-case text-xl font-bold"><FaCamera className='mr-2 text-xl'></FaCamera>RH-<p className='text-red-500'>PHOTOGRAPHY</p></a>
+
+                </>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal text-md font-semibold p-0">
@@ -50,7 +53,10 @@ const Header = () => {
                         user?.uid ?
                             <>
                                 <li><Link to='/review' className='text-red-500'>My Review</Link></li>
-                                <li><Link to='/adduser' className='text-red-500'>Add Service</Link></li>
+                                <>
+                                    <li><Link to='/adduser' className='text-red-500'>Add Service</Link></li>
+                                </>
+
                             </>
                             :
                             <> </>
@@ -67,7 +73,7 @@ const Header = () => {
                             <>
                                 <div className="navbar">
                                     <span> {user?.displayName} </span>
-                                    <Link className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                                    <Link>
                                         {user?.photoURL ?
                                             <img className='rounded-full ml-3'
                                                 style={{ width: '40px' }}
@@ -90,7 +96,6 @@ const Header = () => {
 
                 </Link>
 
-                {/* <Link to='/login' className="btn px-4 m-2">Login</Link> */}
             </div>
         </div>
     );

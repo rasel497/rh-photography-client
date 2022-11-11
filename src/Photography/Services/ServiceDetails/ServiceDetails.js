@@ -16,14 +16,14 @@ const ServiceDetails = () => {
 
     // 01+02.Create and Read Data using useEffect() With Map function
     useEffect(() => {
-        fetch('http://localhost:5000/reviews/')
+        fetch('https://rh-photography-server.vercel.app/reviews/')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [refresh])
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${services._id}`)
+        fetch(`https://rh-photography-server.vercel.app/reviews/${services._id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -50,7 +50,7 @@ const ServiceDetails = () => {
             serviceReview, date, email, dispalyName, photURL, userUid, serviceId, serviceTitle
         }
         console.log(myReview);
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://rh-photography-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

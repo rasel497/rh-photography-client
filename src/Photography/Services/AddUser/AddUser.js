@@ -17,7 +17,7 @@ const AddUser = () => {
         const services = {
             serviceName, image, price, description, date
         }
-        fetch('http://localhost:5000/services', {
+        fetch('https://rh-photography-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -11,8 +11,9 @@ const Review = () => {
     const { user } = useContext(AuthContext);
 
     // 01+02.Create and Read Data using useEffect() With Map function
+    // -------------------strat with coma,,,, Token implemen----------------------/
     useEffect(() => {
-        fetch(`http://localhost:5000/myReviews/${user.uid}`)
+        fetch(`https://rh-photography-server.vercel.app/myReviews/${user.uid}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [refresh, user.uid])
@@ -20,7 +21,7 @@ const Review = () => {
 
     // 03.Delete data from client with MongoDB
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://rh-photography-server.vercel.app/reviews/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

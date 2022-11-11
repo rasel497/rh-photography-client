@@ -1,65 +1,31 @@
 # Getting Started with Create React App
 
-Live Project link: [RH-Photography](https://github.com/facebook/create-react-app).
+Live Project Link: [RH-Photography](https://rh-photography.web.app/).
 
 ## About details
 
-photography project
+This project fully make photography such as Wedding, birthday, music video, event managment and food photography. Here is you can  login with add your service and review separately all the cards. This project based on React, Node.js and mongoDB database.
+
+### `react-router-dom`
+
+It provides the core routing components and functions for the React Router applications.
 
 ### `react-helmet-async`
-about react-helmet-async
 
-### `npm test`
+React Helmet Async is a component which lets you control your document head using their React component.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `react-photo-view`
 
-### `npm run build`
+React-photo-view it has an unparalleled preview interaction experience: starting from the opening of the image, the animation, details and interaction of each frame.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `react-hot-toast`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React Hot Toast is a library that aims to include toast notifications in your React applications easily and intuitively.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `firebase`
 
-### `npm run eject`
+Google Firebase offers many features that pitch it as the go-to backend development tool for web and mobile apps.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `daisyui`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+DaisyUI is a customizable Tailwind CSS component library that prevents verbose markup in frontend applications.

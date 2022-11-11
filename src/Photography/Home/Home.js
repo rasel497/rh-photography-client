@@ -3,7 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import OurTems from '../../Others/OurTems/OurTems';
 import StatsCount from '../../Others/StatsCount/StatsCount';
-import About from '../About/About';
+import Profile from '../About/Profile';
 import BannerService from '../Services/BannerService/BannerService';
 import Banner from './Banner/Banner';
 
@@ -15,7 +15,7 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <BannerService></BannerService>
-            <About></About>
+            <Profile></Profile>
             <StatsCount></StatsCount>
             <OurTems></OurTems>
         </div>

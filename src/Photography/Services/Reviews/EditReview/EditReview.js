@@ -13,7 +13,7 @@ const EditReview = () => {
 
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/reviews/${id}`)
+    //     fetch(`https://rh-photography-server.vercel.app/reviews/${id}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             setRevieww(data)
@@ -37,7 +37,7 @@ const EditReview = () => {
             writeReview
         }
 
-        fetch(`http://localhost:5000/editReview/${review._id}`, {
+        fetch(`https://rh-photography-server.vercel.app/editReview/${review._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

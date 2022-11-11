@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
@@ -20,16 +20,39 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         signInUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                navigate(from, { replace: true });
+                // console.log(user);
                 form.reset();
+
+                const currentUser = {
+                    userUid: user.uid
+                }
+                console.log(user.uid);
+                //Get token start using JWT for valid ueser
+                fetch('https://rh-photography-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('rhp-token', data.token);
+                        // navigate(from, { replace: true });
+                    })
+
+                navigate(from, { replace: true });
             })
             .catch(err => console.log(err));
+
+
+
     }
 
     // Social sign in method
@@ -63,9 +86,9 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-                            <label className="label">
+                            {/* <label className="label">
                                 <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
-                            </label>
+                            </label> */}
                         </div>
 
                         <div className="form-control mt-6">
