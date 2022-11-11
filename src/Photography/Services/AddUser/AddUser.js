@@ -31,7 +31,7 @@ const AddUser = () => {
             }).catch(err => toast.error(err.message));
     }
     return (
-        <div className='mx-40'>
+        <div className='max-w-5xl mx-auto px-4'>
             <Helmet>
                 <title>Add-service</title>
             </Helmet>

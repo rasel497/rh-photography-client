@@ -6,7 +6,7 @@ import './Banner.css'
 const Banner = () => {
     return (
 
-        <div className={`lg:h-[650px] h-96 mb-5 relative`}>
+        <div className={`lg:h-[650px] h-96 -z-10 mb-5 relative`}>
             <div className='absolute z-50 flex justify-center text-center w-full h-full items-center'>
                 <div>
                     <div>
