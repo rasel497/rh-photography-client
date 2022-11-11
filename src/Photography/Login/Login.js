@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const { signInUser, googleSignIn } = useContext(AuthContext);
@@ -27,7 +28,7 @@ const Login = () => {
                 const user = result.user;
                 // console.log(user);
                 form.reset();
-
+                toast.success('Successfully login')
                 const currentUser = {
                     userUid: user.uid
                 }
@@ -51,8 +52,6 @@ const Login = () => {
             })
             .catch(err => console.log(err));
 
-
-
     }
 
     // Social sign in method
@@ -61,6 +60,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success('Successfully login')
                 navigate(from, { replace: true });
             })
             .catch(err => console.log(err))
