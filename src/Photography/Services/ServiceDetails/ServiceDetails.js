@@ -1,6 +1,7 @@
 import { Table } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
@@ -68,6 +69,7 @@ const ServiceDetails = () => {
 
     return (
         <div className='mb-10 mt-7'>
+
             <div className="flex flex-col items-center justify-between lg:flex-row">
                 <div className="mb-10 lg:max-w-lg lg:pr-5 lg:mb-0">
                     <div className="max-w-xl mb-6">
@@ -91,11 +93,11 @@ const ServiceDetails = () => {
                     </div>
                 </div>
                 <div className="relative lg:w-1/2">
-                    <img
-                        className="object-cover w-full h-56 rounded shadow-lg sm:h-96"
-                        src={services.image}
-                        alt=""
-                    />
+                    <PhotoProvider>
+                        <PhotoView src={services.image}>
+                            <figure><img src={services.image} alt='' /></figure>
+                        </PhotoView>
+                    </PhotoProvider>
                 </div>
             </div>
 

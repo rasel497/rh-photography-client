@@ -1,5 +1,6 @@
 import { Table } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
@@ -32,6 +33,9 @@ const Review = () => {
 
     return (
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+            <Helmet>
+                <title>My-reviews</title>
+            </Helmet>
             {/* --------------------Reviews added items----------------- */}
             <Table striped={true}>
                 <Table.Head>

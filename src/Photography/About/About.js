@@ -1,8 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const About = () => {
     return (
         <div className="hero mt-20">
+            <Helmet>
+                <title>About</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <img src="https://i.ibb.co/vqtmPq4/vgaed.jpg" className="max-w-sm rounded shadow-2xl" alt='' />
                 <div>
