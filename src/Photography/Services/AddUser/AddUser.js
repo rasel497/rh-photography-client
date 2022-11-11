@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import toast from 'react-hot-toast';
-
 const AddUser = () => {
-    const [refresh, setRefresh] = useState();
-
 
     const handleAddService = (e) => {
         e.preventDefault();
@@ -29,7 +26,6 @@ const AddUser = () => {
             .then(res => res.json())
             .then(data => {
                 toast.success('You are added new service');
-                setRefresh(!refresh);
                 console.log(data)
             }).catch(err => toast.error(err.message));
     }

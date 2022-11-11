@@ -59,8 +59,10 @@ const ServiceDetails = () => {
             .then(res => res.json())
             .then(data => {
                 toast.success('Thank you for review us');
-                setRefresh(!refresh);
                 console.log(data)
+                // storeReviews, setstoreReviews
+                const newReview = [myReview, ...storeReviews]
+                setstoreReviews(newReview)
             }).catch(err => toast.error(err.message));
     }
 
@@ -108,7 +110,6 @@ const ServiceDetails = () => {
                                     return <img src={img.photURL} alt='' />
                                 })
                             }
-
                         </div>
                         <input name='serviceReview' type="text" placeholder="give us from your excellent review" className="ml-4 input input-ghost w-full input-bordered" />
                     </div>

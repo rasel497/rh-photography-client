@@ -1,7 +1,7 @@
-import { Dropdown, Table } from 'flowbite-react';
+import { Table } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const Review = () => {
@@ -9,12 +9,12 @@ const Review = () => {
     const [refresh, setRefresh] = useState();
     const { user } = useContext(AuthContext);
 
-    // 01+02.Creta and Read Data using useEffect() With Map function
+    // 01+02.Create and Read Data using useEffect() With Map function
     useEffect(() => {
         fetch(`http://localhost:5000/myReviews/${user.uid}`)
             .then(res => res.json())
             .then(data => setReviews(data))
-    }, [user.uid])
+    }, [refresh, user.uid])
 
 
     // 03.Delete data from client with MongoDB
@@ -30,16 +30,8 @@ const Review = () => {
             }).catch(err => toast.error(err.message));
     };
 
-    // 04.Update/Edit data from client side with MongoDB
-    const navigate = useNavigate();
-    const handleEdit = (id) => {
-        navigate(`/reivews/editreview/:id${id}`)
-    }
-
-
     return (
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-
             {/* --------------------Reviews added items----------------- */}
             <Table striped={true}>
                 <Table.Head>
@@ -63,7 +55,7 @@ const Review = () => {
 
                                 <Table.Cell>
                                     <div className='flex'>
-                                        <button onClick={() => handleEdit(review._id)} className="btn btn-sm mr-2">Edit</button>
+                                        <Link to={`/editreview/${review._id}`}><button className="btn btn-sm mr-2">Edit</button></Link>
                                         <button onClick={() => handleDelete(review._id)} className="btn btn-sm">Delete</button>
                                     </div>
                                 </Table.Cell>

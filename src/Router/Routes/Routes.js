@@ -50,7 +50,8 @@ export const routes = createBrowserRouter([
                 element: <PrivateRoute><AddUser></AddUser></PrivateRoute>
             },
             {
-                path: '/reivews/editreview/:id',
+                path: '/editreview/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/editreview/${params.id}`),
                 element: <EditReview></EditReview>
             },
             {
