@@ -1,18 +1,13 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Project link: [RH-Photography](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## About details
 
-In the project directory, you can run:
+photography project
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `react-helmet-async`
+about react-helmet-async
 
 ### `npm test`
 
