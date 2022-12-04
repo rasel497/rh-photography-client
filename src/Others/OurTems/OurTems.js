@@ -75,8 +75,8 @@ const OurTems = () => {
                         alt="Person"
                     />
                     <div className="flex flex-col justify-center">
-                        <p className="text-lg font-bold">Nora Fatehi</p>
-                        <p className="text-sm text-gray-800">Video Editor</p>
+                        <p className="text-lg font-bold">Farzana Farin</p>
+                        <p className="text-sm text-gray-800">Photo & Video Editor</p>
                     </div>
                 </div>
 
