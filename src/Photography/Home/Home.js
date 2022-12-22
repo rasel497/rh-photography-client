@@ -5,6 +5,7 @@ import OurTems from '../../Others/OurTems/OurTems';
 import StatsCount from '../../Others/StatsCount/StatsCount';
 import Profile from '../About/Profile';
 import BannerService from '../Services/BannerService/BannerService';
+import ContacUs from '../Shared/ContacUs/ContacUs';
 import Banner from './Banner/Banner';
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
             <Profile></Profile>
             <StatsCount></StatsCount>
             <OurTems></OurTems>
+            <ContacUs></ContacUs>
         </div>
     );
 };
