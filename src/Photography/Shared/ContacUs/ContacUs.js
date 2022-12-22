@@ -99,7 +99,7 @@ const ContacUs = () => {
                                             <div className="mt-4 mb-2 sm:mb-4">
                                                 <button
                                                     type="submit"
-                                                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium bg-red-500 text-white font-medium"
+                                                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium bg-purple-500 text-white font-medium"
                                                 >
                                                     Subscribe
                                                 </button>
